@@ -1,0 +1,20 @@
+{
+  "name": "Algos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-dags/Algos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j-dags/Algos/issues"
+  },
+  "homepage": "https://github.com/j-dags/Algos#readme"
+}
