@@ -1,27 +1,27 @@
+// For each starting city, loop through route. If we made it all the way return true
 function validStartingCity(distances, fuel, mpg) {
-	// Write your code here.
-
 	for (let city in distances) {
 		city = parseInt(city);
 		let ans = runLoop(distances, fuel, mpg, city);
-		// console.log("ans > ", ans, city)
-		// console.log('loop > ', runLoop(distances, fuel, mpg, 0))
 		if (ans) return city;
 	}
 	return -1;
 }
 
+// Loop through route and return whether we ran out of fuel
 function runLoop(distances, fuel, mpg, start) {
 	let count = start;
 	let currFuel = 0;
+
 	for (const i in fuel) {
-		let index = i + count;
-		console.log(index % fuel.length, currFuel);
-		currFuel += fuel[index % fuel.length];
-		currFuel -= distances[index % fuel.length] / mpg;
+		let index = (parseInt(i) + count) % fuel.length;
 		if (currFuel < 0) return false;
+		currFuel += fuel[index];
+		currFuel -= distances[index] / mpg;
+		currFuel = Math.round(currFuel * 10) / 10;
 	}
 	return true;
 }
-// Do not edit the line below.
-exports.validStartingCity = validStartingCity;
+
+// TIME: O(n)
+// SPACE: O(1)
