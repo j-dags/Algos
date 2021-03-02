@@ -23,5 +23,5 @@ function runLoop(distances, fuel, mpg, start) {
 	return true;
 }
 
-// TIME: O(n)
-// SPACE: O(1)
+// TIME: O(n) - iterate through distances loop twice (not nested)
+// SPACE: O(1) - only storing variables
