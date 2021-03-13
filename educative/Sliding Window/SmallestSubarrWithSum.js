@@ -23,3 +23,6 @@ function smallestSubArr(s, arr) {
 smallestSubArr(7, [2, 1, 5, 2, 3, 2])
 smallestSubArr(7, [2, 1, 5, 2, 8])
 smallestSubArr(8, [3, 4, 1, 1, 6])
+
+// TIME: O(n + n) -> O(n). I think the windowEnd iterates through all elements and so does windowStart (albeit separately), hence O(n + n)
+// SPACE: O(1)
