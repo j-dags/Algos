@@ -1,31 +1,76 @@
+// function checkPermutation(str, pattern) {
+// 	let windowStart = 0
+// 	let hashMap = {}
+
+// 	for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+// 		let rightChar = str[windowEnd]
+
+// 		// Save right character to hash map
+// 		if (!hashMap[rightChar]) hashMap[rightChar] = 0
+// 		hashMap[rightChar]++
+
+// 		// Shrink window when window size is greater than pattern length
+// 		while (1 + windowEnd - windowStart > pattern.length) {
+// 			let leftChar = str[windowStart]
+// 			hashMap[leftChar]--
+// 			if (!hashMap[leftChar]) delete hashMap[leftChar]
+// 			windowStart++
+// 		}
+
+// 		// Check if all letters in pattern are currently in the hash map
+// 		let match = [...pattern].reduce(
+// 			(acc, idx) => acc && Object.keys(hashMap).includes(idx),
+// 			true
+// 		)
+// 		if (match) return true
+// 	}
+
+// 	return false
+// }
+
 function checkPermutation(str, pattern) {
+	let matches = 0
 	let windowStart = 0
-	let letterInStr = []
+	let charFreq = {}
+
+	for (const letter of pattern) {
+		if (!charFreq[letter]) charFreq[letter] = 0
+		charFreq[letter]++
+	}
 
 	for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-		// If leftmost character is not in pattern, shrink window
-		while (1 + windowEnd - windowStart > pattern.length) windowStart++
-		while (!pattern.includes(str[windowStart])) windowStart++
-		// // Check if window is the same size as the pattern string
-		if (1 + windowEnd - windowStart === pattern.length) {
-			// Define substring
-			let substring = str.slice(windowStart, 1 + windowEnd)
-
-			// Check if substring includes each letter of the pattern
-			for (const letter of pattern) letterInStr.push(substring.includes(letter))
-			// console.log(
-			// 	`start: ${windowStart}, end: ${windowEnd}, substring: ${substring}`
-			// )
-			// console.log('letter in str > ', letterInStr)
-			if (letterInStr.reduce((a, b) => a && b)) return true
+		let rightChar = str[windowEnd]
+		if (rightChar in charFreq) {
+			charFreq[rightChar]--
+			if (!charFreq[rightChar]) matches++
 		}
+
+		while (1 + windowEnd - windowStart > pattern.length) {
+			let leftChar = str[windowStart]
+			if (leftChar in charFreq) {
+				if (!charFreq[leftChar]) matches--
+				charFreq[leftChar]++
+			}
+			windowStart++
+		}
+
+		if (matches === pattern.length) return true
 	}
-	// }
-	// If letterInStr contains all trues, that means every letter in pattern was present in the substring. Reduce array to either true or false
+
 	return false
 }
+/*
+Goal: see if the str contains any permutation of the pattern as a substring.
+Approach:
+1. put pattern in hash
+2. iterate through array, if right char in pattern, decrement hash
+3. if charFreq[letter] === 0, increment match
+4. if match.length === pattern.length return true
+5. shrink window: if leftChar in charFreq, charFreq[leftChar]++. If charFreq[leftChar] was 0, match--
 
-// console.log([true, true, false].reduce((a, b) => a && b))
+
+
+*/
 console.log(checkPermutation('oidbcaf', 'abc'))
 console.log(checkPermutation('odicf', 'dc'))
 console.log(checkPermutation('aaacb', 'abc'))
