@@ -1,33 +1,3 @@
-// function checkPermutation(str, pattern) {
-// 	let windowStart = 0
-// 	let hashMap = {}
-
-// 	for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-// 		let rightChar = str[windowEnd]
-
-// 		// Save right character to hash map
-// 		if (!hashMap[rightChar]) hashMap[rightChar] = 0
-// 		hashMap[rightChar]++
-
-// 		// Shrink window when window size is greater than pattern length
-// 		while (1 + windowEnd - windowStart > pattern.length) {
-// 			let leftChar = str[windowStart]
-// 			hashMap[leftChar]--
-// 			if (!hashMap[leftChar]) delete hashMap[leftChar]
-// 			windowStart++
-// 		}
-
-// 		// Check if all letters in pattern are currently in the hash map
-// 		let match = [...pattern].reduce(
-// 			(acc, idx) => acc && Object.keys(hashMap).includes(idx),
-// 			true
-// 		)
-// 		if (match) return true
-// 	}
-
-// 	return false
-// }
-
 function checkPermutation(str, pattern) {
 	let matches = 0
 	let windowStart = 0
@@ -53,12 +23,12 @@ function checkPermutation(str, pattern) {
 			}
 			windowStart++
 		}
-
 		if (matches === pattern.length) return true
 	}
 
 	return false
 }
+
 /*
 Goal: see if the str contains any permutation of the pattern as a substring.
 Approach:
@@ -68,9 +38,10 @@ Approach:
 4. if match.length === pattern.length return true
 5. shrink window: if leftChar in charFreq, charFreq[leftChar]++. If charFreq[leftChar] was 0, match--
 
-
-
+TIME: O(n + m) n=str, m=pattern. We have to iterate through M to populate charFreq at the beginning of the function
+SPACE: O(m) M populates charFreq object
 */
+
 console.log(checkPermutation('oidbcaf', 'abc'))
 console.log(checkPermutation('odicf', 'dc'))
 console.log(checkPermutation('aaacb', 'abc'))
