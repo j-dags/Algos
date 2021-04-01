@@ -30,5 +30,5 @@ TIME: O(n) - only check each number once?
 SPACE: O(1)
 */
 
-// console.log(DutchFlag([1, 0, 2, 1, 0]))
+console.log(DutchFlag([1, 0, 2, 1, 0]))
 console.log(DutchFlag([2, 2, 0, 1, 2, 0]))
