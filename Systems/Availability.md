@@ -14,8 +14,11 @@
 
 ### SLA - Service Level Agreement
 
-An agreement on a systems availability guaranteed to a customer. SLAs are made up of one or multiple SLOs.
+An agreement on a systems availability guaranteed to a customer. SLAs are made up of one or multiple SLOs. Typically penalties if SLOs not met.
 
 ### SLO - Service Level Objective
 
 A guarantee given to a customer. Part of an SLA. SLOs constitute SLAs.
+
+**Redundancy**
+Replicating parts of the system to make it more reliable.
