@@ -27,4 +27,24 @@ User post/edit will write data to cache and database at the same time. That way 
 User network request will update the cache and only the cache. Now, the cache and db are out of sync. But behind the scenes, the system will asynchronously update the database.
 
 **STALENESS**\
-Different features require different levels of caching. As an example, youtube comments should not be stale. If a user changed their comment, but that comment is not updated, then other user's can interact and respond to stale data. That's no good. But video watch count isn't as important. It doesn't really matter how many views a video has, no other systems are dependant on that information.
+Different features require different levels of caching. As an example, youtube comments should not be stale. If a user changed their comment, but that comment is not updated, then other user's can interact and respond to stale data. That's no good. But video watch count isn't as important. It doesn't really matter how many views a video has, no other systems are dependant on that information. A more naive solution can be used for viewcount.
+
+In general, static or immutable data works great with caching. Mutable data is trickier, and more prone to become stale.
+
+Rule of thumb. Use caching:
+
+- only storing static data
+- only one person/thing reading or writing data
+- if consistency or staleness is not an issue
+- can properly invalidate stale data (esp in a distributed system)
+
+### Cache Eviction
+
+How do we get rid of data in caches?
+
+**Least Recently Used (LRU)**\
+Get rid of least recently used data
+
+**Least Freqeuently Used (LFU)**\
+
+**First In First Out (FIFO)**\
