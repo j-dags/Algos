@@ -20,5 +20,9 @@ An agreement on a systems availability guaranteed to a customer. SLAs are made u
 
 A guarantee given to a customer. Part of an SLA. SLOs constitute SLAs.
 
-**Redundancy**
+### Redundancy
+
 Replicating parts of the system to make it more reliable.
+
+**Passive Redundancy**\
+Nothing will happen if one redundant part of the system fails.
