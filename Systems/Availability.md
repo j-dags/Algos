@@ -26,3 +26,6 @@ Replicating parts of the system to make it more reliable.
 
 **Passive Redundancy**\
 Nothing will happen if one redundant part of the system fails.
+
+**Active Redundancy**\
+If one part of system fails, other redundant parts shift to accomodate.
