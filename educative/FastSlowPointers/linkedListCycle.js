@@ -18,6 +18,8 @@ const hasCycle = (head) => {
 	let fast = head
 	let slow = head
 
+	console.log(typeof head.value, head.value)
+
 	// If fast is outside of the linkedlist it will be null. If fast is the last node, fast.next will be null
 	while (fast !== null && fast.next !== null) {
 		// Increment pointers
@@ -29,4 +31,5 @@ const hasCycle = (head) => {
 	return false
 }
 
+// O(n)t | O(1)s. Iterate throgh n nodes.
 console.log(hasCycle(head))
