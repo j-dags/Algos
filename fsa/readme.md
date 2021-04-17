@@ -139,15 +139,50 @@ Excluding the top row and left column, we will be calling two recursive function
 ### Solution Code
 
 ```javascript
-function uniquePaths(row, col) {
+const uniquePaths = (m, n) => {
 	// if we are trying to check a cell outside the limits of our grid, return 0
-	if (row <= 0 || col <= 0) return 0
+	if (m <= 0 || n <= 0) return 0
 
 	// return 1 since there is only one way to get from the start to any of these cells
-	if (row === 1 || col === 1) return 1
+	if (m === 1 || n === 1) return 1
 
 	// in every other case, add up the unique paths we can find by looking to the left and above
-	return uniquePaths(row, col - 1) + uniquePaths(row - 1, col)
+	return uniquePaths(m, n - 1) + uniquePaths(m - 1, n)
+}
+```
+
+---
+
+## Solution and Explanation (c)
+
+This approach improves our recursive solution. We can reduce repeated recursive calls by using memoization. Whenever we calculate the number of unique paths at a given cell, we store that number in a memo (object) that can be retrieved later on.
+
+**Time**: `O(m*n)`
+
+**Space**: `O(m+n)`
+
+### Solution Code
+
+```javascript
+const uniquePaths = (m, n) => {
+	const memo = {}
+
+	const findPaths = (m, n) => {
+		// If we are trying to check a cell outside the limits of our grid, return 0
+		if (m <= 0 || n <= 0) return 0
+
+		// Return 1 since there is only one way to get from the start to any of these cells
+		if (m === 1 || n === 1) return 1
+
+		// If we already visited this cell return its stored value
+		if (memo[`[${m},${n}]`]) return memo[`[${m},${n}]`]
+
+		// Recursive case: save sum of recursive calls to memo
+		memo[`[${m},${n}]`] = findPaths(m - 1, n) + findPaths(m, n - 1)
+		return memo[`[${m},${n}]`]
+	}
+
+	return findPaths(m, n)
 }
 ```
 
@@ -156,5 +191,6 @@ function uniquePaths(row, col) {
 ## Summary
 
 - Dynamic programming is a handy tool for incrementally building up answers to complex problems.
+- Memoization may take up more space, but can help reduce the resources needed to perform calculations over and over.
 
 ---

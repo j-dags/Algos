@@ -2,68 +2,66 @@
 // Naive recursion
 // O(2^m*n)t | O(m+n)s
 // -------------------------------
-const uniquePaths = (row = 0, col = 0) => {
-	debugger
-	// if we've reach our target cell, we know we've found a valid path
+// const uniquePaths = (m, n) => {
+// 	// if we are trying to check a cell outside the limits of our grid, return 0
+// 	if (m <= 0 || n <= 0) return 0
 
-	// if we are trying to check a cell outside the limits of our grid, return 0
-	if (row <= 0 || col <= 0) return 0
+// 	// return 1 since there is only one way to get from the start to any of these cells
+// 	if (m === 1 || n === 1) return 1
 
-	// return 1 so that we can increment our count of unique paths
-	if (row === 1 || col === 1) return 1
-
-	// in every other case, add up the unique paths we can find by looking to the right or looking down
-	return uniquePaths(row, col - 1) + uniquePaths(row - 1, col)
-}
+// 	// in every other case, add up the unique paths we can find by looking to the left and above
+// 	return uniquePaths(m, n - 1) + uniquePaths(m - 1, n)
+// }
 
 // -------------------------------
 // Recursion w/ memoization
 // O(m*n)t | O(m+n)s
 // -------------------------------
-const uniquePaths = (row, col) => {
-	debugger
+const uniquePaths = (m, n) => {
 	const memo = {}
 
-	const finder = (row, col) => {
-		// Out of bounds return 0
-		if (row <= 0 || col <= 0) return 0
-		// End row/col return 1
-		if (row === 1 || col === 1) return 1
-		// If we already visited this cell return its value
-		if (memo[`[${row},${col}]`]) return memo[`[${row},${col}]`]
+	const findPaths = (m, n) => {
+		// If we are trying to check a cell outside the limits of our grid, return 0
+		if (m <= 0 || n <= 0) return 0
+
+		// Return 1 since there is only one way to get from the start to any of these cells
+		if (m === 1 || n === 1) return 1
+
+		// If we already visited this cell return its stored value
+		if (memo[`[${m},${n}]`]) return memo[`[${m},${n}]`]
 
 		// Recursive case: save sum of recursive calls to memo
-		memo[`[${row},${col}]`] = finder(row - 1, col) + finder(row, col - 1)
-		return memo[`[${row},${col}]`]
+		memo[`[${m},${n}]`] = findPaths(m - 1, n) + findPaths(m, n - 1)
+		return memo[`[${m},${n}]`]
 	}
 
-	return finder(row, col)
+	return findPaths(m, n)
 }
 
 // -------------------------------
 // Dynamic Programming
 // O(m*n)t | O(m*n)s
 // -------------------------------
-function uniquePaths(m, n) {
-	// initialize an m x n matrix filled with 1s
-	const matrix = Array(m)
-	for (let row = 0; row < m; row++) {
-		matrix[row] = Array(n).fill(1)
-	}
+// const uniquePaths = (m, n) => {
+// 	const memo = {}
 
-	// iterate through the matrix, starting from the row at index 1
-	for (let row = 1; row < m; row++) {
-		// iterate through the row starting from the column at index 1
-		for (let col = 1; col < n; col++) {
-			// set the value of the current cell to the calculated value of possible paths to arrive at our current cell
-			matrix[row][col] = matrix[row - 1][col] + matrix[row][col - 1]
-		}
-	}
-	return matrix[m - 1][n - 1]
-}
+// 	const findPaths = (m, n) => {
+// 		// If we are trying to check a cell outside the limits of our grid, return 0
+// 		if (m <= 0 || n <= 0) return 0
+
+// 		// Return 1 since there is only one way to get from the start to any of these cells
+// 		if (m === 1 || n === 1) return 1
+
+// 		// If we already visited this cell return its stored value
+// 		if (memo[`[${m},${n}]`]) return memo[`[${m},${n}]`]
+
+// 		// Recursive case: save sum of recursive calls to memo
+// 		memo[`[${m},${n}]`] = findPaths(m - 1, n) + findPaths(m, n - 1)
+// 		return memo[`[${m},${n}]`]
+// 	}
+
+// 	return findPaths(m, n)
+// }
 
 console.log(uniquePaths(3, 3))
 console.log(uniquePaths(4, 4))
-
-//3,3 -> 4
-//4,4 -> 6
