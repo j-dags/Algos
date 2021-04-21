@@ -43,4 +43,10 @@ const merge = (intervals) => {
 }
 
 let result = merge([new Interval(1, 4), new Interval(2, 5), new Interval(7, 9)])
+let result2 = merge([
+	new Interval(1, 9),
+	new Interval(2, 5),
+	new Interval(7, 9),
+])
 console.log(result)
+console.log(result2)
