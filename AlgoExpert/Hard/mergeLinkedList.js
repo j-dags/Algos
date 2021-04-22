@@ -4,6 +4,7 @@ Prompt: given two sorted linked lists, merge them in sorted order.
 Approach: Use three pointers, p1, p2, p1prev. Increment through the linkedlists and where appropriate insert p2 head in between prev and p1. At the end, return whichever head points to the lower initial value.
 
 O(n+m)t | O(1)s. Iterate through both linked lists. No extra spaced required.
+
 */
 
 class LinkedList {
