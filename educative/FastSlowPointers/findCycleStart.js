@@ -14,54 +14,35 @@ class Node {
 }
 
 const head = new Node(1)
-head.next = new Node(2)
-head.next.next = new Node(3)
-head.next.next.next = new Node(4)
-head.next.next.next.next = new Node(5)
-head.next.next.next.next.next = new Node(6)
+const two = new Node(2)
+const four = new Node(4)
+const five = new Node(5)
+const six = new Node(6)
 
-head.next.next.next.next.next.next = head.next.next
+head.next = two
+two.next = four
+four.next = five
+five.next = six
+six.next = four
 
+// Much more elegant solution!
 const findCycleStart = (head) => {
-	// Declare two pointers, left and right. Once they meet we will have our cycle start
-	let left = head
-	let right = head
+	let slow = head.next
+	let fast = head.next.next
 
-	// Find the length of the cycle
-	let length = findCycleLength(head)
-	// Shift the right node by the length of the cycle
-	for (let i = length; i > 0; i--) right = right.next
-
-	// Loop through cycle until two pointers meet up
-	while (left.value !== right.value) {
-		left = left.next
-		right = right.next
-	}
-	return left
-}
-
-const findCycleLength = (head) => {
-	let slow = head
-	let fast = head
-
-	while (fast !== null && fast.next !== null) {
-		fast = fast.next.next
+	// find the point 'p' where the fast and slow pointers will meet
+	while (slow !== fast) {
 		slow = slow.next
-
-		if (fast === slow) return calcCycleLength(fast)
+		fast = fast.next.next
 	}
-	return null
-}
 
-const calcCycleLength = (node) => {
-	let length = 1
-	let current = node.next
-
-	while (current.value !== node.value) {
-		current = current.next
-		length++
+	// reset the slow pointer. at this point the slow pointer will be a distance 'd' from the starting node of the loop. because of math, the second pointer will be a dikstance 'r' (which happens to equal 'd') from the cycle. so, the two pointers will meet at our desired node.
+	slow = head
+	while (slow !== fast) {
+		slow = slow.next
+		fast = fast.next
 	}
-	return length
+	return slow
 }
 
 console.log(findCycleStart(head))
