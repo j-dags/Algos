@@ -15,6 +15,7 @@ class LinkedList {
 }
 
 function mergeLinkedLists(headOne, headTwo) {
+	debugger
 	let p1 = headOne
 	let p2 = headTwo
 	let prev = null
@@ -51,14 +52,14 @@ const eight = new LinkedList('8')
 const nine = new LinkedList('9')
 const ten = new LinkedList('10')
 
-one.next = two
-two.next = three
-three.next = four
-four.next = five
-
+two.next = six
 six.next = seven
 seven.next = eight
-eight.next = nine
-nine.next = ten
 
-console.log(mergeLinkedLists(one, six))
+one.next = three
+three.next = four
+four.next = five
+// five.next = nine
+// nine.next = ten
+
+console.log(mergeLinkedLists(two, one))
