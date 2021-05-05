@@ -15,30 +15,24 @@ class LinkedList {
 }
 
 function mergeLinkedLists(headOne, headTwo) {
-	debugger
-	let p1 = headOne
-	let p2 = headTwo
-	let prev = null
-
-	// keep iterating until we hit the end of both lists
-	while (p1 !== null && p2 !== null) {
-		// increment p1 && prev while p1 < p2
-		if (p1.value < p2.value) {
-			prev = p1
-			p1 = p1.next
-		} else {
-			// if there is a prev node, then insert p2 in between prev and p1
-			if (prev !== null) prev.next = p2
-			prev = p2
-			p2 = p2.next
-			prev.next = p1
-		}
-	}
-	// once p1 runs out, insert the rest of p2
-	if (!p1) prev.next = p2
-
-	// return whichever head has a lower initial value
+	recursiveMerge(headOne, headTwo, null)
 	return headOne.value < headTwo.value ? headOne : headTwo
+}
+
+function recursiveMerge(p1, p2, p1Prev) {
+  if (p1 === null) {
+    p1Prev.next = p2
+    return
+  }
+  if (p2 === null) return
+​  if (p1.value < p2.value) {
+    recursiveMerge(p1.next, p2, p1)
+  } else {
+    if (p1Prev !== null) p1Prev.next = p2
+    const newP2 = p2.next
+    p2.next = p1
+    recursiveMerge(p1, newP2, p2)
+  }
 }
 
 const one = new LinkedList('1')
