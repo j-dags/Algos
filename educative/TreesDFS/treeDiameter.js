@@ -3,7 +3,7 @@ Given a binary tree, find the length of its diameters. The diameter of a tree is
 
 Approach: Traverse through the tree in a DFS manner and keep track of depth as we treverse (but in reverse order, i.e. a leaf has a depth of 1, the node above has a depth 2, etc.). The max diameter will be the node with the two greatest depths of children summed together.
 
-My approach was pretty much spot on! Could simplify by not having to declare and invoke a function though. Let's attempt to further simplify.
+My approach was pretty much spot on! Could simplify by not having to declare and invoke a function though. Let's attempt to further simplify. Update: defined the calcDiameter class method instead of declaring and invoking a helper function within the find_Diameter method.
 */
 
 class TreeNode {
@@ -20,25 +20,19 @@ class TreeDiameter {
 	}
 
 	find_diameter(root) {
-		let maxDiameter = 0
-
-		const findDiameter = (head) => {
-			if (!head) return 0 // Return 0 depth is node is null
-
-			// Define vars left and right that are either 0 or the depths of each child path.
-			let left = findDiameter(head.left) || 0
-			let right = findDiameter(head.right) || 0
-
-			let depth = 1 + Math.max(left, right) // Depth of the current node
-			let diameter = 1 + left + right // Diameter of the current node
-
-			this.treeDiameter = Math.max(this.treeDiameter, diameter) // Update max if we find a larger diameter
-			return depth // Return depth of node
-		}
-
-		findDiameter(root)
-
+		this.calcDiameter(root)
 		return this.treeDiameter
+	}
+
+	calcDiameter(head) {
+		if (!head) return 0 // Return 0 depth is node is null
+
+		// Define vars left and right that are either 0 or the depths of each child path.
+		let left = this.calcDiameter(head.left) || 0
+		let right = this.calcDiameter(head.right) || 0
+		this.treeDiameter = Math.max(this.treeDiameter, 1 + left + right) // Update max if we find a larger diameter
+
+		return 1 + Math.max(left, right) // Return depth of node
 	}
 }
 
