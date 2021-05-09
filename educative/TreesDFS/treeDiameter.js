@@ -30,8 +30,8 @@ class TreeDiameter {
 		if (!head) return 0 // Return 0 depth is node is null
 
 		// Define vars left and right that are either 0 or the depths of each child path.
-		let left = this.calcDiameter(head.left) || 0
-		let right = this.calcDiameter(head.right) || 0
+		let left = this.calcDiameter(head.left)
+		let right = this.calcDiameter(head.right)
 		this.treeDiameter = Math.max(this.treeDiameter, 1 + left + right) // Update max if we find a larger diameter
 
 		return 1 + Math.max(left, right) // Return depth of node
