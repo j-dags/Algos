@@ -4,6 +4,8 @@ Given a binary tree, find the length of its diameters. The diameter of a tree is
 Approach: Traverse through the tree in a DFS manner and keep track of depth as we treverse (but in reverse order, i.e. a leaf has a depth of 1, the node above has a depth 2, etc.). The max diameter will be the node with the two greatest depths of children summed together.
 
 My approach was pretty much spot on! Could simplify by not having to declare and invoke a function though. Let's attempt to further simplify. Update: defined the calcDiameter class method instead of declaring and invoking a helper function within the find_Diameter method.
+
+O(n)t | O(h)s. Need to hit each node in the BST. The callstack will be the height of the bst.
 */
 
 class TreeNode {
