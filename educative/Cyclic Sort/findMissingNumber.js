@@ -32,3 +32,14 @@ const findMissingNumber = (arr) => {
 
 console.log(findMissingNumber([4, 0, 3, 1]))
 console.log(findMissingNumber([8, 3, 5, 2, 4, 6, 0, 1]))
+
+
+// Alternative solutions
+// var missingNumber = function(nums) {
+//     let sum = 0, total = 0
+//     for(let i = 0; i < nums.length; i++) {
+//         sum += nums[i]
+//         total += i + 1
+//     }
+//     return total - sum
+// };
