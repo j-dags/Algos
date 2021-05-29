@@ -26,6 +26,7 @@ const findMissingNumber = (arr) => {
 	for (i = 0; i < arr.length; i++) {
 		if (i !== arr[i]) return i
 	}
+	console.log('arr > ', arr)
 	return arr.length
 }
 
