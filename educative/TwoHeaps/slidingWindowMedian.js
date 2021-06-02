@@ -47,7 +47,6 @@ class SlidingWindowMedian {
 		let start = 0
 
 		for (let end = 0; end < nums.length; end++) {
-			debugger
 			this.insertNum(nums[end]) // insert number into heaps
 
 			// close window
