@@ -43,5 +43,4 @@ def main():
   print("The median is: " + str(median.findMedian()))
 
 
-
 main()
