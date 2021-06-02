@@ -1,26 +1,28 @@
-
-
-def traverse(head):
-  queue = [head]
+def zigzagTraversal(root):
+  queue = [root] # initialize queue to root node
   result = []
-  print('queue > ', queue[0].val)
 
-
-  while len(queue):
+  while queue: # iterate through loop while queue is not empty
     arr = []
+    # levelSize prevents us from looping pasts current level in queue
     levelSize = len(queue)
 
-    for i in range(levelSize):
+    for _ in range(levelSize):
+      # these two lines act as .shift() method
       curr = queue[0]
       queue = queue[1:]
 
+      # .unshift() curr.val on odd levels
+      if len(result) % 2 == 0: arr.append(curr.val)
+      else: arr = [curr.val] + arr
+
+      # add child nodes to queue
       if curr.left: queue.append(curr.left)
       if curr.right: queue.append(curr.right)
-      arr.append(curr.val)
 
     result.append(arr)
-
   return result
+
 
 class Node:
   def __init__(self, val):
@@ -43,4 +45,4 @@ two.right = five
 three.left = six
 three.right = seven
 
-print(traverse(one))
+print(zigzagTraversal(one))
