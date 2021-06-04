@@ -7,10 +7,7 @@ O(n)t | O(h)s. Recursive stack is height of BST. In the worst case, this would b
 */
 
 const hasPath = (head, s) => {
-	debugger
-	let hasPath = false
-	calcPath(head, s)
-	return hasPath
+	return calcPath(head, s)
 }
 
 const calcPath = (node, target) => {
@@ -41,7 +38,7 @@ root.left.left = new Node(9)
 root.right.left = new Node(10)
 root.right.right = new Node(5)
 
-console.log(calcPath(root, 23))
-console.log(calcPath(root, 28))
-console.log(calcPath(root, 111))
-console.log(calcPath(root, 18))
+console.log(hasPath(root, 23))
+console.log(hasPath(root, 28))
+console.log(hasPath(root, 111))
+console.log(hasPath(root, 18))
