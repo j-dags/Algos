@@ -16,6 +16,7 @@ function findMissingNumber(arr) {
 		if (arr[i] !== arr[j] && j < arr.length) [arr[i], arr[j]] = [arr[j], arr[i]]
 		else i++
 	}
+
 	for (let i = 0; i < arr.length; i++) {
 		if (i !== arr[i]) return i
 	}
