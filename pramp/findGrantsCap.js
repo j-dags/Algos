@@ -1,5 +1,5 @@
 /*
-Given an array of grants and a budget, find a cap such that all grants sum to the budget. 
+Given an array of grants and a budget, find a cap such that all grants sum to the budget.
 Any grant equal to or great than the cap will be reduced to the cap.
 
 Approach:
@@ -10,16 +10,17 @@ O(nlogn)t | O(1)s
 */
 
 function findGrantsCap(grantsArray, newBudget) {
-    let cap = 0
-    let arr = grantsArray.sort((a,b) => a - b)
+	let cap = 0
+	let arr = grantsArray.sort((a, b) => a - b)
 
-    for (let i = 0; i < grantsArray.length; i++) {
-        newBudget -= arr[i]
-        let remainder = Math.floor(newBudget / (arr.length - i - 1))
+	for (let i = 0; i < grantsArray.length; i++) {
+		newBudget -= arr[i]
+		let remainder = Math.floor(newBudget / (arr.length - i - 1))
 
-        if (remainder > arr[i]) cap = remainder
-    }
-    return cap
+		if (remainder >= arr[i]) cap = remainder
+	}
+	return cap
 }
 
 console.log(findGrantsCap([2, 100, 50, 120, 1000], 190))
+console.log(findGrantsCap([2, 100, 50, 120, 1000], 380))
