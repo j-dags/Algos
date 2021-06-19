@@ -5,7 +5,7 @@
 # Approach:
 # Sliding window. Keep track of max size of 0s as we slide. When end pointer encounters a 1, we take the max of current window and prev largest window. At this point we need to move the start pointer to the end pointer because we will start a new window.
 
-def solution(N):
+def binaryGap(N):
     binary = f'{N:08b}' # convert int to binary string
 
     maxZeroes = 0

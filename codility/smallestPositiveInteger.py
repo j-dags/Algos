@@ -1,5 +1,17 @@
 # Write a function that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
 
+
+
+# SIMPLER APPROACH: 1 is the min answer we return. Iterate through the list and if we we see the val of min then increment min.
+# O(n)t | O(1)s
+def smallestPositiveInteger(A):
+    A.sort()
+    min = 1
+
+    for val in A:
+        if val == min: min += 1
+    return min
+
 # Approach:
 # Use cyclic sort. Whichever index is out of place will be our answer. Can also just use built in .sort() within Python
 
@@ -17,13 +29,3 @@
 #     for idx, val in enumerate(A):
 #         if A[idx] != idx + 1: return idx + 1
 #     return A[-1] + 1
-
-# SIMPLER APPROACH: 1 is the min answer we return. Iterate through the list and if we we see the val of min then increment min.
-# O(n)t | O(1)s
-def solution(A):
-    A.sort()
-    min = 1
-
-    for val in A:
-        if val == min: min += 1
-    return min
