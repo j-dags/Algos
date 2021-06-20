@@ -8,5 +8,5 @@
 
 import math
 
-def solution(X, Y, D):
+def frogJump(X, Y, D):
     return math.ceil((Y - X) / D)
