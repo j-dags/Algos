@@ -28,3 +28,7 @@ const subArraySum = (arr) => {
 }
 
 console.log(subArraySum([4, 5, 6]))
+
+const pineapple = () => 'Absolutely Not'
+
+console.log(pineapple())

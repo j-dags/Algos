@@ -9,6 +9,9 @@ const whereCanIEat = (inputData) => {
 	const ms = unixTime * 1000
 	const date = new Date(ms)
 	console.log(date, date.toUTCString(), date.getDay())
+  
+  
+  fetch(foodTruckDataUrl)
 }
 
 console.log(whereCanIEat(`http://wtv.com\n1575909015\nZvjklsdmF89fjd`))

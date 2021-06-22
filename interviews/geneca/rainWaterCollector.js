@@ -49,3 +49,7 @@ console.log('collection device "d" can hold', rainWaterCollector(d))
 // vol = 38
 const e = [0, 5, 3, 2, 8, 8, 1, 1, 2, 4, 3, 3, 7, 1, 2, 4, 3, 2]
 console.log('collection device "e" can hold', rainWaterCollector(e))
+
+// vol = 38
+const f = [5, 4, 3, 2, 1]
+console.log('collection device "f" can hold', rainWaterCollector(f))

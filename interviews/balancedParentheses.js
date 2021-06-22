@@ -36,5 +36,5 @@ const balancedParentheses = (string) => {
 	return open + close
 }
 
-console.log(balancedParentheses('()))'))
+// console.log(balancedParentheses('()))'))
 console.log(balancedParentheses('((()())))'))
