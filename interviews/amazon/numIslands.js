@@ -29,11 +29,11 @@ const removeIsland = (grid, x, y) => {
 
 	// traverse through adjacent 1s
 	if (x < grid[0].length - 1 && grid[y][x + 1] === '1')
-		removeIslands(grid, x + 1, y)
-	if (x > 0 && grid[y][x - 1] === '1') removeIslands(grid, x - 1, y)
+		removeIsland(grid, x + 1, y)
+	if (x > 0 && grid[y][x - 1] === '1') removeIsland(grid, x - 1, y)
 	if (y < grid.length - 1 && grid[y + 1][x] === '1')
-		removeIslands(grid, x, y + 1)
-	if (y > 0 && grid[y - 1][x] === '1') removeIslands(grid, x, y - 1)
+		removeIsland(grid, x, y + 1)
+	if (y > 0 && grid[y - 1][x] === '1') removeIsland(grid, x, y - 1)
 }
 
 let island1 = [
