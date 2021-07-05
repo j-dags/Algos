@@ -21,25 +21,50 @@ O(1)t | O(n)s
 
 */
 
-var LRUCache = function (capacity) {
-	this.capacity = capacity
-	this.map = new Map()
-}
+// var LRUCache = function (capacity) {
+// 	this.capacity = capacity
+// 	this.map = new Map()
+// }
 
-LRUCache.prototype.get = function (key) {
-	if (!this.map.has(key)) return -1
-	const val = this.map.get(key)
-	this.map.delete(key)
-	this.map.set(key, val)
-	return val
-}
+// LRUCache.prototype.get = function (key) {
+// 	if (!this.map.has(key)) return -1
+// 	const val = this.map.get(key)
+// 	this.map.delete(key)
+// 	this.map.set(key, val)
+// 	return val
+// }
 
-LRUCache.prototype.put = function (key, value) {
-	this.map.delete(key)
-	this.map.set(key, value)
-	if (this.map.size > this.capacity) {
-		const firstItem = this.map.keys().next().value
-		this.map.delete(firstItem)
+// LRUCache.prototype.put = function (key, value) {
+// 	this.map.delete(key)
+// 	this.map.set(key, value)
+// 	if (this.map.size > this.capacity) {
+// 		const firstItem = this.map.keys().next().value
+// 		this.map.delete(firstItem)
+// 	}
+// }
+
+class LRUCache {
+	constructor(capacity) {
+		this.capacity = capacity
+		this.cache = new Map()
+	}
+
+	get(key) {
+		if (!this.cache.has(key)) return -1
+
+		const value = this.cache.get(key)
+		this.cache.delete(key)
+		this.cache.set(key, value)
+		return value
+	}
+
+	put(key, value) {
+		this.cache.delete(key)
+		this.cache.set(key, value)
+		if (this.cache.size > this.capacity) {
+			let firstItem = this.cache.keys().next().value
+			this.cache.delete(firstItem)
+		}
 	}
 }
 
@@ -52,7 +77,3 @@ myCache.put('e', 5)
 myCache.put(2, 6)
 myCache.put({}, 6)
 myCache.put([], 6)
-console.log(myCache)
-console.log(myCache.map.size)
-
-console.log(myCache.get('a'))
