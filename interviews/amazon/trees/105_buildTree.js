@@ -11,7 +11,7 @@ const buildTree = (preorder, inorder) => {
 
 	function helper(start, end) {
 		if (start > end) return null
-		let curr = preorder.shift()
+		let curr = preorder.shift() // preorder traversal starts at the root node and works down the tree
 		let node = new TreeNode(curr)
 		node.left = helper(start, map.get(curr) - 1)
 		node.right = helper(map.get(curr) + 1, end)
