@@ -34,7 +34,7 @@ const maxMinPath = (grid) => {
 			const j = y + dy
 			if (i < 0 || j < 0 || i >= h || j >= w) continue
 			const score = Math.min(grid[i][j], dp[x][y]) // compare current cell value to next cell value
-			// if the next cell has a higher score, then set dp[i][j] and add [i, j] to the queue
+			// if the next cell has a higher score than dp[i][j], then set dp[i][j] and add [i, j] to the queue
 			if (score > dp[i][j]) {
 				dp[i][j] = score
 				queue.push([i, j])
