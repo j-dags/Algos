@@ -18,7 +18,7 @@ const findPeakElement = (array: number[]) => {
 		let mid = Math.floor((left + right) / 2)
 		// If slope is descending at mid, shrink window aka move right to mid
 		if (array[mid] > array[mid + 1]) right = mid
-		// IF slope is ascending, move left to mid + 1. Note we can safely move left to mid + 1 because we verified array[num + 1] > array[m]
+		// If slope is ascending, move left to mid + 1. Note we can safely move left to mid + 1 because we verified array[num + 1] > array[m]
 		else left = mid + 1
 	}
 	return left

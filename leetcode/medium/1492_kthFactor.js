@@ -13,7 +13,6 @@ const kthFactor = (n, k) => {
         if (count === k) return i
     }
     return -1
-    
 }
 
 

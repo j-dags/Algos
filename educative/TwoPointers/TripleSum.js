@@ -1,36 +1,39 @@
 //3/29/21
 
-const TripleSum = (arr) => {
-	let triplets = []
-	// sort input array
-	arr = arr.sort((a, b) => a - b)
+var TripleSum = function (nums) {
+	let ans = []
+	nums = nums.sort((a, b) => a - b)
 
-	// iterate through array. each element will serve as left pointer
-	for (let left = 0; left < arr.length - 2; left++) {
-		// declare middle and right pointers. This is essentially a two pointer problem at this point
-		let middle = left + 1
-		let right = arr.length - 1
+	for (let left = 0; left < nums.length - 2; left++) {
+		if (nums[left] > 0) break
+		if (nums[left] === nums[left - 1]) continue
 
-		while (middle < right) {
-			// Skip over duplicated numbers
-			while (arr[middle] === arr[middle - 1]) middle++
-			while (arr[right] === arr[right + 1]) right--
+		let mid = left + 1
+		let right = nums.length - 1
 
-			let currSum = arr[left] + arr[middle] + arr[right]
-			let currArr = [arr[left], arr[middle], arr[right]]
+		while (mid < right) {
+			const currSum = nums[left] + nums[mid] + nums[right]
+			const currArr = [nums[left], nums[mid], nums[right]]
 
-			// Save array if === 0, else decrement/increment pointers accordingly
-			if (currSum === 0 && !triplets.includes(currArr)) triplets.push(currArr)
-			if (currSum < 0) middle++
+			if (currSum === 0) {
+				ans.push(currArr)
+
+				// inc mid until we get unique value
+				while (mid < right && nums[mid] === currArr[1]) mid++
+				// dec right until we get unique value
+				while (mid < right && nums[right] === currArr[2]) right--
+			} else if (currSum < 0) mid++
 			else right--
 		}
 	}
-
-	return triplets
+	return ans
 }
 
 console.log(TripleSum([-3, 0, 1, 2, -1, 1, -2]))
 console.log(TripleSum([-5, 2, -1, -2, 3]))
+console.log(TripleSum([-2, 0, 1, 1, 2]))
+console.log(TripleSum([-1, 0, 1, 2, -1, -4]))
+console.log(TripleSum([-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0]))
 
 // TIME: O(n^2). We essentially have nested loops
 // SPACE: O(n). At most we could have a 3n array, which reduces to n.
