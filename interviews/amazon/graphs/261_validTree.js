@@ -17,7 +17,7 @@ var validTree = function (n, edges) {
 	if (edges.length !== n - 1) return false
 	if (n === 1) return true
 
-	// build graph
+	// Build adjacency list
 	let graph = {}
 	for (const edge of edges) {
 		if (!graph[edge[0]]) graph[edge[0]] = []
@@ -27,19 +27,29 @@ var validTree = function (n, edges) {
 		graph[edge[1]].push(edge[0])
 	}
 
-	let visited = {}
-	dfs(graph, 0, visited)
-	return Object.keys(visited).length === n
-}
+	// Use set to track visited nodes
+	let visited = new Set()
 
-const dfs = function (graph, node, visited) {
-	if (node in visited) return
-
-	visited[node] = true
-
-	if (node in graph) {
-		for (const child of graph[node]) {
-			if (!visited[child]) dfs(graph, child, visited)
+	const dfs = function (node) {
+		if (visited.has(node)) return
+		visited.add(node)
+		if (node in graph) {
+			for (const child of graph[node]) {
+				if (!visited.has(child)) dfs(child)
+			}
 		}
 	}
+
+	dfs(0)
+	return visited.size === n
 }
+
+let input = [
+	[0, 1],
+	[1, 2],
+	[2, 3],
+	[1, 3],
+	[1, 4],
+]
+
+console.log(validTree(5, input))
