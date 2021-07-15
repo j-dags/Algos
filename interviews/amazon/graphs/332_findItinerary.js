@@ -15,33 +15,33 @@ Approach:
 
 */
 
-// var findItinerary = function (tickets) {
-// 	let result = []
-// 	let adjacencyList = {}
+var findItinerary = function (tickets) {
+	let result = []
+	let adjacencyList = {}
 
-// 	// create adj list
-// 	for (const ticket of tickets) {
-// 		if (!adjacencyList[ticket[0]]) adjacencyList[ticket[0]] = []
-// 		adjacencyList[ticket[0]].push(ticket[1])
-// 	}
+	// create adj list
+	for (const ticket of tickets) {
+		if (!adjacencyList[ticket[0]]) adjacencyList[ticket[0]] = []
+		adjacencyList[ticket[0]].push(ticket[1])
+	}
 
-// 	//sort adj list
-// 	for (let ticket in adjacencyList) {
-// 		adjacencyList[ticket].sort()
-// 	}
+	//sort adj list
+	for (let ticket in adjacencyList) {
+		adjacencyList[ticket].sort()
+	}
 
-// 	// dfs + backtracking
-// 	function dfs(dep) {
-// 		let destination = adjacencyList[dep]
-// 		while (destination && destination.length) {
-// 			dfs(destination.shift())
-// 		}
-// 		result.push(dep)
-// 	}
+	// dfs + backtracking
+	function dfs(dep) {
+		let destination = adjacencyList[dep]
+		while (destination && destination.length) {
+			dfs(destination.shift())
+		}
+		result.push(dep)
+	}
 
-// 	dfs('JFK')
-// 	return result.reverse()
-// }
+	dfs('JFK')
+	return result.reverse()
+}
 
 let itinerary = [
 	['JFK', 'SFO'],

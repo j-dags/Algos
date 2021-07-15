@@ -46,12 +46,11 @@ const validTree = (n, edges) => {
 
 let input = [
 	[0, 1],
-	[0, 2],
-	[0, 3],
-	[1, 4],
+	[2, 3],
+	[1, 2],
 ]
 
-console.log(validTree(5, input))
+console.log(validTree(4, input))
 
 /* ----------------------------
 DFS Implementation

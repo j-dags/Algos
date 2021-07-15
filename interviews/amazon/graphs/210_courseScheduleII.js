@@ -54,16 +54,16 @@ const findOrder = (numCourses, prerequisites) => {
 	return ans.length == numCourses ? ans : []
 }
 
-// console.log(
-// 	findOrder(4, [
-// 		[1, 0],
-// 		[2, 0],
-// 		[3, 1],
-// 		[3, 2],
-// 	])
-// )
+console.log(
+	findOrder(4, [
+		[1, 0],
+		[2, 0],
+		[3, 1],
+		[3, 2],
+	])
+)
 
-// console.log(findOrder(2, [[0, 1]]))
+console.log(findOrder(2, [[0, 1]]))
 
 console.log(
 	findOrder(3, [
