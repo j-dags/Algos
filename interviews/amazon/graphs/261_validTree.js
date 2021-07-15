@@ -51,7 +51,7 @@ let input = [
 	[1, 4],
 ]
 
-console.log('UF > ', validTree(5, input))
+console.log(validTree(5, input))
 
 /* ----------------------------
 DFS Implementation
@@ -95,3 +95,5 @@ var validTreeDFS = function (n, edges) {
 }
 
 console.log('DFS > ', validTreeDFS(5, input))
+
+module.exports = validTree

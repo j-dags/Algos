@@ -123,3 +123,5 @@ console.log(
 // 	}
 // 	return groups
 // }
+
+module.exports = countComponents
