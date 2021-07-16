@@ -3,6 +3,11 @@ A path in a binary tree is a sequence of nodes where each pair of adjacent nodes
 The path sum of a path is the sum of the node's vals in the path.
 Given the root of a binary tree, return the maximum path sum of any path.
 
+Approach:
+- DFS through tree
+- For each node compare node.val + dfs(node.left) + dfs(node.right) to existing max variable
+- For each dfs iteration return node.val + Math.max(left, right). We can only choose a left or right path to return, so return the max one.
+
 O(n)t | O(1)s
 */
 
