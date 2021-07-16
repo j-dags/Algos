@@ -40,6 +40,39 @@ const countComponents = (n, edges) => {
 	return set.size
 }
 
+// // DFS Implementation
+// const countComponents = (n, edges) => {
+// 	let adjList = {}
+// 	let visited = new Set()
+// 	let groups = 0
+
+// 	// Populate an adjacency list
+// 	for (const [start, end] of edges) {
+// 		if (!adjList[start]) adjList[start] = []
+// 		if (!adjList[end]) adjList[end] = []
+
+// 		adjList[start].push(end)
+// 		adjList[end].push(start)
+// 	}
+
+// 	// DFS helper function
+// 	const dfs = (node) => {
+// 		visited.add(node)
+// 		for (const child of adjList[node]) {
+// 			if (!visited.has(child)) dfs(child)
+// 		}
+// 	}
+
+// 	// Iterate through 0...n-1. If node hasn't already been visited, call dfs helper function
+// 	for (let i = 0; i < n; i++) {
+// 		if (!visited.has(i)) {
+// 			groups++
+// 			if (adjList[i]) dfs(i)
+// 		}
+// 	}
+// 	return groups
+// }
+
 console.log(
 	countComponents(4, [
 		[2, 3],
@@ -55,37 +88,6 @@ console.log(
 		[3, 4],
 	])
 )
-
-// // DFS Implementation
-// const countComponents = (n, edges) => {
-// 	let adjList = {}
-// 	let visited = {}
-// 	let groups = 0
-
-// 	// Populate an adjacency list
-// 	for (const [start, end] of edges) {
-// 		if (!adjList[start]) adjList[start] = []
-// 		if (!adjList[end]) adjList[end] = []
-
-// 		adjList[start].push(end)
-// 		adjList[end].push(start)
-// 	}
-
-// 	// DFS helper function
-// 	const dfs = (node) => {
-// 		visited[node] = true
-// 		for (const child of adjList[node]) {
-// 			if (!visited[child]) dfs(child)
-// 		}
-// 	}
-
-// 	// Iterate through 0...n-1. If node hasn't already been visited, call dfs helper function
-// 	for (let i = 0; i < n; i++) {
-// 		if (!visited[i]) {
-// 			groups++
-// 			if (adjList[i]) dfs(i)
-// 		}
-// 	}
 
 // 	return groups
 // }
@@ -123,3 +125,5 @@ console.log(
 // 	}
 // 	return groups
 // }
+
+module.exports = countComponents
