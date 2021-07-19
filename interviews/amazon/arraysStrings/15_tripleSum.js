@@ -34,3 +34,7 @@ var TripleSum = function (nums) {
 	}
 	return ans
 }
+
+console.log(threeSum([-1, 0, 1, 2, -1, -4]))
+console.log(threeSum([0, 0, 0, 0]))
+console.log(threeSum([1, 1, -2]))

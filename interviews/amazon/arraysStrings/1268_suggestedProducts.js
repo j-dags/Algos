@@ -10,7 +10,7 @@ O(products * searchWord)t | O(products)s
 
 */
 
-// THIS IS EVEN BETTER
+// // THIS IS EVEN BETTER
 const suggestedProducts = (products, searchWord) => {
 	let result = []
 	products = products.sort()

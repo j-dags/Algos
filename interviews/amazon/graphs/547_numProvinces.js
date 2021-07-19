@@ -33,7 +33,6 @@ var findCircleNum = function (grid) {
 		}
 	}
 
-	console.log(grid)
 	return numProvinces
 }
 
